@@ -1,9 +1,9 @@
 # Deploy automático: push na main → upload FTP pro cPanel
 # Requer os secrets FTP_HOST, FTP_USER e FTP_PASS configurados no repositório.
-# Fica desativado (workflow_dispatch apenas) até os secrets existirem;
-# depois trocar para: on: push: branches: [main]
 name: Deploy FTP
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 jobs:
   deploy:
