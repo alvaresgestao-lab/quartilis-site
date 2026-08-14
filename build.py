@@ -75,7 +75,7 @@ def page(prefix, active, title, desc, body, extra_head=''):
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23dfddd0%22/><text y=%2272%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2260%22>🎻</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}assets/site.css">
+<link rel="stylesheet" href="{prefix}assets/site.css?v=2">
 {extra_head}</head>
 <body>
 {header(prefix, active)}
@@ -249,7 +249,7 @@ rep = re.sub(r'<footer class="rodape">.*?</footer>\n?', '', rep, flags=re.S)
 rep = re.sub(r'<a class="whats-flutuante".*?</a>\n?', '', rep, flags=re.S)
 rep = re.sub(r'<link rel="stylesheet" href="\.\./assets/site\.css">\n?', '', rep)
 rep = rep.replace('Repertório | Quartilis (protótipo)', 'Repertório | Quartilis')
-rep = rep.replace('</head>', '<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23dfddd0%22/><text y=%2272%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2260%22>🎻</text></svg>">\n<link rel="stylesheet" href="../assets/site.css">\n</head>', 1)
+rep = rep.replace('</head>', '<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23dfddd0%22/><text y=%2272%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2260%22>🎻</text></svg>">\n<link rel="stylesheet" href="../assets/site.css?v=2">\n</head>', 1)
 rep = rep.replace('<body>', '<body>\n' + header('../', 'Repertório'), 1)
 rep = rep.replace('</body>', footer('../') + '\n</body>', 1)
 open(rep_path, 'w', encoding='utf-8').write(rep)
