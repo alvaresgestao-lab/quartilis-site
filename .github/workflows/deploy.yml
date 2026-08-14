@@ -1,0 +1,24 @@
+# Deploy automático: push na main → upload FTP pro cPanel
+# Requer os secrets FTP_HOST, FTP_USER e FTP_PASS configurados no repositório.
+# Fica desativado (workflow_dispatch apenas) até os secrets existirem;
+# depois trocar para: on: push: branches: [main]
+name: Deploy FTP
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enviar arquivos via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/README.md
