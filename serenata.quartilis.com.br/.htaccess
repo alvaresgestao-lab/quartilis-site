@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RedirectMatch 301 ^/category/.*$ /blog/
+RedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/
+RedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /
+RedirectMatch 301 ^/serenata-em-curitiba/?$ /serenata-em-curitiba/

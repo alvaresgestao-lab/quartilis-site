@@ -22,3 +22,6 @@ jobs:
             **/.git*
             **/.git*/**
             **/README.md
+            build.py
+            build_sub.py
+            content/**

@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RedirectMatch 301 ^/(inspiracoes|dicas|pagina-inicial|blog)/?$ /
+RedirectMatch 301 ^/category/.*$ /
+RedirectMatch 301 ^/(feed|comments/feed)/?$ /
