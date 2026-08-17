@@ -46,7 +46,8 @@ def render_conteudo(raw, updir, updisk):
             vid = solo.group(1)
             out.append(f'<div class="video-frame"><iframe src="https://www.youtube.com/embed/{vid}" title="Vídeo" loading="lazy" allowfullscreen></iframe></div>')
             continue
-        b = YT.sub(lambda m: f'<a href="https://www.youtube.com/watch?v={m.group(1)}" target="_blank" rel="noopener">assista no YouTube</a>', b)
+        b = re.sub(r'(?<!["\'=])\bhttps?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]{6,})[^\s<"]*',
+                   lambda m: f'<a href="https://www.youtube.com/watch?v={m.group(1)}" target="_blank" rel="noopener">assista no YouTube</a>', b)
         if re.match(r'<(h\d|ul|ol|blockquote|figure|div|img|iframe|p)', b):
             out.append(b)
         else:
