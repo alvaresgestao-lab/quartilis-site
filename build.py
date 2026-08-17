@@ -32,7 +32,7 @@ def header(prefix, active):
         items += f'<li><a href="{url or prefix or "./"}"{cls}{ext}>{label}</a></li>'
     return f'''<header class="topo">
   <div class="topo-inner">
-    <a class="marca" href="{prefix or './'}">QUARTILIS<span>música para eventos</span></a>
+    <a class="marca" href="{prefix or './'}"><img class="marca-logo" src="{prefix}assets/logo-quartilis.png?v=1" alt=""><span class="marca-textos">QUARTILIS<span>música para eventos</span></span></a>
     <input type="checkbox" id="menu-chk" aria-label="Abrir menu">
     <label for="menu-chk" class="menu-btn"><span></span><span></span><span></span></label>
     <nav><ul>{items}</ul></nav>
@@ -76,7 +76,7 @@ def page(prefix, active, title, desc, body, extra_head=''):
 <link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}assets/site.css?v=2">
+<link rel="stylesheet" href="{prefix}assets/site.css?v=3">
 {extra_head}</head>
 <body>
 {header(prefix, active)}
@@ -250,7 +250,7 @@ rep = re.sub(r'<footer class="rodape">.*?</footer>\n?', '', rep, flags=re.S)
 rep = re.sub(r'<a class="whats-flutuante".*?</a>\n?', '', rep, flags=re.S)
 rep = re.sub(r'<link rel="stylesheet" href="\.\./assets/site\.css">\n?', '', rep)
 rep = rep.replace('Repertório | Quartilis (protótipo)', 'Repertório | Quartilis')
-rep = rep.replace('</head>', '<link rel="icon" type="image/png" href="../assets/favicon.png?v=1">\n<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">\n<link rel="stylesheet" href="../assets/site.css?v=2">\n</head>', 1)
+rep = rep.replace('</head>', '<link rel="icon" type="image/png" href="../assets/favicon.png?v=1">\n<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">\n<link rel="stylesheet" href="../assets/site.css?v=3">\n</head>', 1)
 rep = rep.replace('<body>', '<body>\n' + header('../', 'Repertório'), 1)
 rep = rep.replace('</body>', footer('../') + '\n</body>', 1)
 open(rep_path, 'w', encoding='utf-8').write(rep)

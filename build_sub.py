@@ -71,7 +71,7 @@ def pagina(cfg, prefix, titulo, desc, corpo, ativo=''):
 <link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}assets/site.css?v=2">
+<link rel="stylesheet" href="{prefix}assets/site.css?v=3">
 <style>
 .artigo{{max-width:760px;margin:0 auto;padding:40px 20px 70px}}
 .artigo h1{{margin-bottom:6px}}
@@ -90,7 +90,7 @@ def pagina(cfg, prefix, titulo, desc, corpo, ativo=''):
 <body>
 <header class="topo">
   <div class="topo-inner">
-    <a class="marca" href="{prefix or './'}">{cfg['marca']}<span>{cfg['tagline']}</span></a>
+    <a class="marca" href="{prefix or './'}"><img class="marca-logo" src="{prefix}assets/logo-quartilis.png?v=1" alt=""><span class="marca-textos">{cfg['marca']}<span>{cfg['tagline']}</span></span></a>
     <input type="checkbox" id="menu-chk" aria-label="Abrir menu">
     <label for="menu-chk" class="menu-btn"><span></span><span></span><span></span></label>
     <nav><ul>{itens}</ul></nav>

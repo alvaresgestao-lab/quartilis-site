@@ -18,8 +18,10 @@ h3{font-size:22px}
 /* ---------- topo ---------- */
 .topo{position:sticky;top:0;z-index:50;background:var(--branco);border-bottom:1px solid var(--creme)}
 .topo-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:68px}
-.marca{font-family:var(--serif);font-weight:600;font-size:26px;letter-spacing:.14em;text-decoration:none;display:flex;flex-direction:column;line-height:1}
-.marca span{font-family:var(--sans);font-weight:300;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--sage-escuro);margin-top:4px}
+.marca{font-family:var(--serif);font-weight:600;font-size:26px;letter-spacing:.14em;text-decoration:none;display:flex;align-items:center;gap:12px;line-height:1}
+.marca-logo{height:46px;width:auto}
+.marca-textos{display:flex;flex-direction:column;line-height:1}
+.marca-textos > span{font-family:var(--sans);font-weight:300;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--sage-escuro);margin-top:4px}
 .topo nav ul{list-style:none;display:flex;gap:26px}
 .topo nav a{text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:6px 0;border-bottom:2px solid transparent}
 .topo nav a:hover,.topo nav a.ativo{border-bottom-color:var(--sage-escuro)}
