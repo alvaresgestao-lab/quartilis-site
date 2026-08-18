@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gerar páginas a partir do conteúdo
+        run: |
+          python3 build.py
+          python3 build_sub.py
       - name: Enviar arquivos via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -25,3 +32,4 @@ jobs:
             build.py
             build_sub.py
             content/**
+            painel/config.php
