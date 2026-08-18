@@ -143,3 +143,16 @@ body>.topo+.topo{display:none}
   .fundo-f span{font-size:300px}
   .secao{padding:52px 0}
 }
+
+/* ---------- widget WhatsApp com formulário ---------- */
+.whats-widget{position:fixed;right:22px;bottom:22px;z-index:80;font-family:var(--sans)}
+.whats-btn{width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.whats-btn svg{width:30px;height:30px}
+.whats-painel{display:none;position:absolute;bottom:70px;right:0;width:300px;background:var(--branco);border:1px solid var(--creme);box-shadow:0 10px 30px rgba(0,0,0,.18);padding:20px}
+.whats-painel.aberto{display:block}
+.whats-painel h3{font-size:19px;margin-bottom:4px}
+.whats-painel p{font-size:13px;color:var(--ink-suave);margin-bottom:6px}
+.whats-painel label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-escuro);display:block;margin:12px 0 4px}
+.whats-painel input,.whats-painel select{width:100%;padding:10px;border:1px solid var(--creme);font:inherit;font-size:15px;background:var(--creme-claro)}
+.whats-enviar{margin-top:16px;width:100%;background:#25d366;color:#fff;border:0;padding:13px;font:inherit;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.whats-enviar:hover{filter:brightness(.95)}
