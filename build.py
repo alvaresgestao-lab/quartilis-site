@@ -131,7 +131,7 @@ body = f'''
       <img src="https://i.ytimg.com/vi/OrDxE1oDg54/hqdefault.jpg" alt="Vídeo da semana do Quartilis" loading="lazy">
       <button class="play" aria-label="Assistir vídeo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
     </div>
-    <p class="centro"><a class="link-seta" href="{SOCIALS.get('youtube','#')}" target="_blank" rel="noopener">Mais vídeos no nosso canal</a></p>
+    <p class="centro"><a class="btn" href="repertorio/">Conheça o nosso repertório</a></p>
   </div>
 </section>
 
