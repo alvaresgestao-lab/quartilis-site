@@ -117,7 +117,6 @@ body = f'''
       <h2>O Quartilis</h2>
       <p>Quartilis é um grupo especializado em música para eventos. Surgiu em 2002 em formato de Quarteto de Cordas e hoje é formado por 13 instrumentistas, oferecendo várias formações musicais que se adaptam a cada momento e estilo de evento.</p>
       <p>O grupo é reconhecido pela alta qualidade, afinidade entre os músicos e a execução impecável do repertório, do erudito ao popular.</p>
-      <p>Mensalmente realiza uma apresentação e consultoria exclusiva para auxiliar os noivos na escolha da formação musical e do repertório.</p>
       <a class="link-seta" href="musicos/">Conheça os músicos</a>
     </div>
     <figure class="foto-chanfro"><img src="{I}KG9A0027.jpg" alt="Quartilis tocando em concerto à luz de velas" loading="lazy"></figure>
@@ -126,8 +125,8 @@ body = f'''
 
 <section class="secao secao-creme">
   <div class="secao-inner">
-    <h2>Vídeo da semana</h2>
-    <p class="sub">Toda semana o Quartilis prepara um vídeo especialmente para você. Acompanhe nosso repertório, que vai do erudito aos clássicos do rock.</p>
+    <h2>O Quartilis em ação</h2>
+    <p class="sub">Assista ao grupo ao vivo e conheça um repertório que vai do erudito aos clássicos do rock.</p>
     <div class="video-wrap" data-video="OrDxE1oDg54">
       <img src="https://i.ytimg.com/vi/OrDxE1oDg54/hqdefault.jpg" alt="Vídeo da semana do Quartilis" loading="lazy">
       <button class="play" aria-label="Assistir vídeo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
@@ -190,13 +189,13 @@ write('musicos/index.html', page('../', 'Músicos', 'Músicos | Quartilis',
 # ============ SERVIÇOS ============
 servicos = [
     ('Música ao vivo para cerimônia', 'Casamento, bodas e missa',
-     'Com formações que variam desde instrumentos solo (piano, violino, violão) até orquestra de cordas e clarins, para emocionar e tornar o seu evento único e especial.'),
+     'Com formações que variam desde instrumentos solo (piano, violino, violão) até orquestra de cordas e clarins, com a participação de cantores, para emocionar e tornar o seu evento único e especial.'),
     ('Música ao vivo para recepção', 'Coquetel, almoço e jantar',
-     'Música instrumental requintada, com diversas opções de estilos musicais e formações para recepcionar os convidados e deixar o ambiente do seu evento agradável e sofisticado.'),
+     'Música instrumental requintada, com diversas opções de estilos musicais e formações, incluindo grupos acústicos, para recepcionar os convidados e deixar o ambiente do seu evento agradável e sofisticado.'),
     ('Concerto didático', 'Abertura de eventos, congressos e palestras',
      'Repertório variado para agradar a todos os públicos e enriquecer o seu evento.'),
     ('Serenatas e homenagens', 'Um presente inesquecível',
-     'Homenagens musicais em diversas opções de formações, para presentear e homenagear quem você ama em aniversários, pedidos de casamento e datas especiais.'),
+     'Homenagens musicais em diversas opções de formações, para presentear e homenagear quem você ama em aniversários, pedidos de casamento e datas especiais. <a class="link-seta" href="https://serenata.quartilis.com.br" target="_blank" rel="noopener">Conheça o site de Serenatas</a>'),
 ]
 blocos = ''.join(f'''<div class="card-servico grande"><h2>{t}</h2><p class="tag">{tag}</p><p>{d}</p></div>''' for t, tag, d in servicos)
 body = f'''
@@ -237,7 +236,7 @@ body = f'''
   <a class="cartao-contato" href="https://wa.me/{WHATS}?text=Olá!%20Gostaria%20de%20um%20orçamento." target="_blank" rel="noopener">
     <h3>WhatsApp</h3><p>{WHATS_FMT}</p><p class="tag">Resposta mais rápida</p></a>
   <a class="cartao-contato" href="mailto:{EMAIL}"><h3>E-mail</h3><p>{EMAIL}</p><p class="tag">Orçamentos e propostas</p></a>
-  <div class="cartao-contato"><h3>Consultoria mensal</h3><p>Apresentação exclusiva para noivos escolherem formação e repertório ao vivo.</p><p class="tag">Agende pelo WhatsApp</p></div>
+  <div class="cartao-contato"><h3>Consultoria para noivos</h3><p>Atendimento personalizado para escolher a formação musical e o repertório ideais para a sua cerimônia.</p><p class="tag">Agende pelo WhatsApp</p></div>
 </div></section>'''
 write('contato/index.html', page('../', 'Contato', 'Contato | Quartilis',
       'Entre em contato com o Quartilis pelo WhatsApp (41) 99127-1129 ou contato@quartilis.com.br.', body))
