@@ -448,30 +448,5 @@
         "post_type": "post",
         "post_mime_type": "",
         "comment_count": "0"
-    },
-    {
-        "ID": "1787056970",
-        "post_author": "1",
-        "post_date": "2026-08-18 12:42:50",
-        "post_date_gmt": "2026-08-18 12:42:50",
-        "post_content": "Este é um artigo de teste criado pelo painel da Ana.\n\nSe você está vendo esta página, o painel funcionou de ponta a ponta. Este artigo será excluído em instantes.",
-        "post_title": "Artigo de teste do painel",
-        "post_excerpt": "",
-        "post_status": "publish",
-        "comment_status": "closed",
-        "ping_status": "closed",
-        "post_password": "",
-        "post_name": "artigo-de-teste-do-painel",
-        "to_ping": "",
-        "pinged": "",
-        "post_modified": "2026-08-18 12:42:50",
-        "post_modified_gmt": "2026-08-18 12:42:50",
-        "post_content_filtered": "",
-        "post_parent": "0",
-        "guid": "",
-        "menu_order": "0",
-        "post_type": "post",
-        "post_mime_type": "",
-        "comment_count": "0"
     }
 ]
