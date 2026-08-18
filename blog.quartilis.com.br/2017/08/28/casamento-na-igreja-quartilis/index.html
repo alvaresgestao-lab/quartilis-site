@@ -90,7 +90,7 @@
 </div>
 <script>
 function wAbrir(){document.getElementById('wpainel').classList.toggle('aberto')}
-function wEnviar(){var n=document.getElementById('wnome').value.trim();var m=document.getElementById('wmotivo').value;var t='Olá! '+(n?('Meu nome é '+n+'. '):'')+'Gostaria de falar sobre: '+m+'.';window.open('https://wa.me/5541991271129?text='+encodeURIComponent(t),'_blank')}
+function wEnviar(){var n=document.getElementById('wnome').value.trim();var m=document.getElementById('wmotivo').value;var t='Olá! '+(n?('Meu nome é '+n+', vim'):'Vim')+' através do blog do Quartilis e gostaria de falar sobre: '+m+'.';window.open('https://wa.me/5541991271129?text='+encodeURIComponent(t),'_blank')}
 document.addEventListener('click',function(e){var a=e.target.closest('a[href^="https://wa.me"]');if(!a)return;e.preventDefault();document.getElementById('wpainel').classList.add('aberto');var c=document.getElementById('wnome');if(c)c.focus()});
 </script>
 </body>

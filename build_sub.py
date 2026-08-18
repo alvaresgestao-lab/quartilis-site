@@ -133,7 +133,7 @@ def pagina(cfg, prefix, titulo, desc, corpo, ativo=''):
 </div>
 <script>
 function wAbrir(){{document.getElementById('wpainel').classList.toggle('aberto')}}
-function wEnviar(){{var n=document.getElementById('wnome').value.trim();var m=document.getElementById('wmotivo').value;var t='Olá! '+(n?('Meu nome é '+n+'. '):'')+'Gostaria de falar sobre: '+m+'.';window.open('https://wa.me/5541991271129?text='+encodeURIComponent(t),'_blank')}}
+function wEnviar(){{var n=document.getElementById('wnome').value.trim();var m=document.getElementById('wmotivo').value;var t='Olá! '+(n?('Meu nome é '+n+', vim'):'Vim')+' através do {cfg['origem']} e gostaria de falar sobre: '+m+'.';window.open('https://wa.me/5541991271129?text='+encodeURIComponent(t),'_blank')}}
 document.addEventListener('click',function(e){{var a=e.target.closest('a[href^="https://wa.me"]');if(!a)return;e.preventDefault();document.getElementById('wpainel').classList.add('aberto');var c=document.getElementById('wnome');if(c)c.focus()}});
 </script>
 </body>
@@ -211,7 +211,7 @@ SERENATA = {
                 ('serenata-por-video', 'serenata-por-video/', 'Serenata por Vídeo'),
                 ('sugestoes-de-musicas', 'sugestoes-de-musicas/', 'Sugestões de músicas'), ('videos', 'videos/', 'Vídeos')],
     'blog_dest': 'blog/', 'blog_titulo': 'Blog', 'blog_sub': 'Histórias de serenatas, homenagens e datas especiais em Curitiba.',
-    'cta': 'Quero uma serenata', 'permalink': 'simples',
+    'cta': 'Quero uma serenata', 'permalink': 'simples', 'origem': 'site de Serenatas do Quartilis',
     'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/category/.*$ /blog/\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/\nRedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /\nRedirectMatch 301 ^/serenata-em-curitiba/?$ /blog/serenata-em-curitiba/\n',
 }
 # nota: serenata posts moram na raiz (/slug/), não sob /blog/ — ajustar htaccess acima se necessário
@@ -223,7 +223,7 @@ BLOG = {
     'nav': [('', 'Blog'), ('https://quartilis.com.br', 'Site principal'), ('https://serenata.quartilis.com.br', 'Serenatas')],
     'paginas': [], 'blog_dest': '', 'blog_titulo': 'Blog Quartilis',
     'blog_sub': 'Dicas para a escolha da música do casamento e histórias reais de cerimônias com o Quartilis.',
-    'cta': 'Pedir um orçamento', 'permalink': 'data',
+    'cta': 'Pedir um orçamento', 'permalink': 'data', 'origem': 'blog do Quartilis',
     'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/(inspiracoes|dicas|pagina-inicial|blog)/?$ /\nRedirectMatch 301 ^/category/.*$ /\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /\n',
 }
 
