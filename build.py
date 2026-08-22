@@ -59,7 +59,7 @@ def footer(prefix):
       <div class="social">{soc}</div>
     </div>
   </div>
-  <p class="assinatura">© Quartilis · música para eventos</p>
+  <p class="assinatura">© Quartilis · música para eventos · Site por <a href="https://pedroalvares.com/" target="_blank" rel="noopener">Pedro Álvares</a></p>
 </footer>
 <div class="whats-widget" id="wwidget">
   <div class="whats-painel" id="wpainel">
