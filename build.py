@@ -95,6 +95,7 @@ def page(prefix, active, title, desc, body, extra_head=''):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="canonical" href="__CANONICAL__">
 <link rel="icon" type="image/png" href="{prefix}assets/favicon.png?v=1">
 <link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,6 +112,8 @@ def page(prefix, active, title, desc, body, extra_head=''):
 def write(path, content):
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
+    canonical = 'https://quartilis.com.br/' + path[:-len('index.html')] if path.endswith('index.html') else 'https://quartilis.com.br/' + path
+    content = content.replace('__CANONICAL__', canonical)
     open(full, 'w', encoding='utf-8').write(content)
     print(f'  {path} ({len(content)//1024} KB)')
 

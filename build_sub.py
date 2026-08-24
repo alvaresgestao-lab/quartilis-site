@@ -96,6 +96,7 @@ def pagina(cfg, prefix, titulo, desc, corpo, ativo=''):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{titulo}</title>
 <meta name="description" content="{html.escape(desc)[:158]}">
+<link rel="canonical" href="__CANONICAL__">
 <link rel="icon" type="image/png" href="{prefix}assets/favicon.png?v=1">
 <link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,6 +195,8 @@ def gerar(site, cfg):
     def escrever(rel, conteudo_html):
         full = os.path.join(base, rel, 'index.html') if rel else os.path.join(base, 'index.html')
         os.makedirs(os.path.dirname(full), exist_ok=True)
+        canonical = f'https://{site}.quartilis.com.br/' + rel
+        conteudo_html = conteudo_html.replace('__CANONICAL__', canonical)
         open(full, 'w', encoding='utf-8').write(conteudo_html)
 
     # páginas estáticas
