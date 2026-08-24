@@ -54,6 +54,35 @@ def render_conteudo(raw, updir, updisk):
             out.append('<p>' + b.replace('\n', '<br>') + '</p>')
     return '\n'.join(out)
 
+
+def slugify_py(t):
+    import unicodedata
+    t = unicodedata.normalize('NFD', t.lower())
+    t = ''.join(c for c in t if unicodedata.category(c) != 'Mn')
+    t = re.sub(r'[^a-z0-9]+', '-', t)
+    return t.strip('-')
+
+def posts_md(site):
+    """Lê artigos em content/posts-<site>/*.md (formato: linhas 'titulo:' e 'data:', depois '---', depois o corpo)."""
+    pasta = os.path.join(ROOT, 'content', f'posts-{site}')
+    extras = []
+    if not os.path.isdir(pasta): return extras
+    for fn in sorted(os.listdir(pasta)):
+        if not fn.endswith('.md') or fn.startswith('_'): continue
+        raw = open(os.path.join(pasta, fn), encoding='utf-8').read()
+        partes = raw.split('---', 1)
+        cab, corpo = (partes[0], partes[1]) if len(partes) == 2 else ('', raw)
+        titulo, data = '', ''
+        for ln in cab.splitlines():
+            if ln.lower().startswith('titulo:'): titulo = ln.split(':', 1)[1].strip()
+            if ln.lower().startswith('data:'): data = ln.split(':', 1)[1].strip()
+        if not titulo: continue
+        if not re.match(r'^\d{4}-\d{2}-\d{2}$', data): data = '2026-01-01'
+        extras.append({'post_name': slugify_py(titulo), 'post_date': f'{data} 09:00:00',
+                       'post_title': titulo, 'post_content': corpo.strip(),
+                       'post_type': 'post', 'post_status': 'publish'})
+    return extras
+
 def pagina(cfg, prefix, titulo, desc, corpo, ativo=''):
     itens = ''
     for href, label in cfg['nav']:
@@ -151,7 +180,10 @@ def gerar(site, cfg):
     shutil.copy(os.path.join(ROOT, 'assets', 'site.css'), os.path.join(base, 'assets', 'site.css'))
     posts = json.load(open(os.path.join(ROOT, 'content', f'{site}-conteudo.json')))
     pages = {p['post_name']: p for p in posts if p['post_type'] == 'page'}
-    arts = sorted([p for p in posts if p['post_type'] == 'post'], key=lambda x: x['post_date'], reverse=True)
+    extras = posts_md(site)
+    slugs_md = {p['post_name'] for p in extras}
+    arts = [p for p in posts if p['post_type'] == 'post' and p['post_name'] not in slugs_md] + extras
+    arts = sorted(arts, key=lambda x: x['post_date'], reverse=True)
 
     def caminho_post(p):
         if cfg['permalink'] == 'data':

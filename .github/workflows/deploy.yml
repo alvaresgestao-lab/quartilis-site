@@ -15,6 +15,7 @@ jobs:
           python-version: '3.12'
       - name: Gerar páginas a partir do conteúdo
         run: |
+          find serenata.quartilis.com.br blog.quartilis.com.br -name index.html -delete
           python3 build.py
           python3 build_sub.py
       - name: Enviar arquivos via FTP
