@@ -240,11 +240,11 @@ def gerar(site, cfg):
 SERENATA = {
     'titulo': 'Serenata Quartilis', 'marca': 'SERENATA', 'tagline': 'quartilis · um presente inesquecível',
     'rodape': 'Serenatas em Curitiba e região: homenagens musicais ao vivo ou por vídeo, desde 2002.',
-    'nav': [('', 'Apresentação'), ('serenata-ao-vivo/', 'Serenata ao vivo'), ('serenata-por-video/', 'Serenata por Vídeo'),
-            ('sugestoes-de-musicas/', 'Sugestões de músicas'), ('videos/', 'Vídeos'), ('blog/', 'Blog')],
-    'paginas': [('pagina-inicial', '', 'Apresentação'), ('serenata-ao-vivo', 'serenata-ao-vivo/', 'Serenata ao vivo'),
-                ('serenata-por-video', 'serenata-por-video/', 'Serenata por Vídeo'),
-                ('sugestoes-de-musicas', 'sugestoes-de-musicas/', 'Sugestões de músicas'), ('videos', 'videos/', 'Vídeos')],
+    'nav': [('', 'Início'), ('sugestoes-de-musicas/', 'Sugestões de Músicas'),
+            ('blog/', 'Blog'), ('https://quartilis.com.br', 'Site Quartilis')],
+    'paginas': [('serenata-ao-vivo', 'serenata-ao-vivo/', ''),
+                ('serenata-por-video', 'serenata-por-video/', ''),
+                ('sugestoes-de-musicas', 'sugestoes-de-musicas/', 'Sugestões de Músicas'), ('videos', 'videos/', '')],
     'blog_dest': 'blog/', 'blog_titulo': 'Blog', 'blog_sub': 'Histórias de serenatas, homenagens e datas especiais em Curitiba.',
     'cta': 'Quero uma serenata', 'permalink': 'simples', 'origem': 'site de Serenatas do Quartilis',
     'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/category/.*$ /blog/\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/\nRedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /\nRedirectMatch 301 ^/serenata-em-curitiba/?$ /blog/serenata-em-curitiba/\n',
@@ -262,6 +262,100 @@ BLOG = {
     'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/(inspiracoes|dicas|pagina-inicial|blog)/?$ /\nRedirectMatch 301 ^/category/.*$ /\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /\n',
 }
 
+def serenata_landing():
+    W = '5541991271129'
+    videos = [
+        ('rg6zy4aXTdE', 'Dia das Mães, serenatas com violino'),
+        ('b4dl-m-UW3o', 'Violino solo'),
+        ('wrZFVf03NLA', 'Violino e viola erudita'),
+        ('liYQHvYVudo', 'Violino e violoncelo'),
+        ('cBK1F6TSHSM', 'Voz, violão e violino'),
+        ('x9wl-PqJCBU', 'Voz, violão, violino e violoncelo'),
+        ('jJi-AHQrmAk', 'Voz, violão e acordeon'),
+        ('bXfHG328v0A', 'Serenata de aniversário'),
+        ('O98rNXGrbPA', 'Serenata ao vivo'),
+        ('aHfUJnCj8Wk', 'Serenata ao vivo'),
+    ]
+    vids = ''
+    for vid, tit in videos:
+        vids += (f'<a class="card-video" href="https://www.youtube.com/watch?v={vid}" target="_blank" rel="noopener">'
+                 f'<span class="thumb"><img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="{tit}" loading="lazy">'
+                 f'<span class="play-mini"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>'
+                 f'<span class="titulo-video">{tit}</span></a>')
+    cta = f'https://wa.me/{W}?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20serenata%20em%20Curitiba.'
+    corpo = f'''
+<section class="hero-nova">
+  <div class="fundo-f" aria-hidden="true"><span>&fnof;</span><span class="espelhado">&fnof;</span></div>
+  <div class="hero-grade">
+    <div class="hero-esq">
+      <p class="kicker">Homenagens musicais ao vivo &middot; Curitiba e regi&atilde;o</p>
+      <h1>Serenata em Curitiba</h1>
+      <p class="hero-sub">Um presente que emociona e marca a vida de quem voc&ecirc; ama. Do violino solo &agrave; voz e viol&atilde;o, a Quartilis leva m&uacute;sica ao vivo at&eacute; o seu momento especial, desde 2002.</p>
+      <div class="hero-botoes">
+        <a class="btn" href="{cta}" target="_blank" rel="noopener">Pedir uma serenata</a>
+        <a class="btn btn-borda" href="#videos">Ver serenatas</a>
+      </div>
+    </div>
+    <figure class="hero-dir foto-chanfro"><img src="assets/fotos/duo-violino-violoncelo-recepcao-casamento-curitiba.jpg" alt="Serenata com violino e violoncelo em Curitiba" fetchpriority="high"></figure>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="secao-inner" style="max-width:800px;margin:0 auto;text-align:center">
+    <h2>Um Presente Inesquec&iacute;vel</h2>
+    <p class="sub" style="margin:0 auto">A serenata &eacute; uma homenagem musical ao vivo que emociona em pedidos de casamento, anivers&aacute;rios, bodas e datas especiais. Em Curitiba e regi&atilde;o, levamos m&uacute;sica de qualidade at&eacute; o momento certo, com o instrumento e o repert&oacute;rio escolhidos junto com voc&ecirc;.</p>
+  </div>
+</section>
+
+<section class="secao secao-creme" id="como-funciona">
+  <div class="secao-inner">
+    <div class="cards-servicos">
+      <div class="card-servico grande" id="ao-vivo">
+        <h2>Serenata ao Vivo</h2>
+        <p class="tag">Presen&ccedil;a e emo&ccedil;&atilde;o</p>
+        <p>Voc&ecirc; escolhe o instrumento e as m&uacute;sicas com a nossa consultoria, e n&oacute;s levamos a serenata at&eacute; o local. Recomendamos de 5 a 6 m&uacute;sicas, cerca de 15 a 20 minutos, o tempo ideal para uma homenagem inesquec&iacute;vel em Curitiba e regi&atilde;o.</p>
+      </div>
+      <div class="card-servico grande" id="por-video">
+        <h2>Serenata por V&iacute;deo</h2>
+        <p class="tag">Para eternizar ou surpreender de longe</p>
+        <p>Gravamos as m&uacute;sicas exclusivamente para a sua serenata e editamos com seus v&iacute;deos e fotos, criando um presente totalmente personalizado. Cada serenata virtual &eacute; &uacute;nica, pensada para emocionar.</p>
+      </div>
+    </div>
+    <p class="centro"><a class="btn" href="{cta}" target="_blank" rel="noopener">Falar sobre uma serenata</a></p>
+  </div>
+</section>
+
+<section class="secao" id="videos">
+  <div class="secao-inner">
+    <h2>Veja Algumas Serenatas</h2>
+    <p class="sub">Momentos reais de serenatas do Quartilis em Curitiba e regi&atilde;o.</p>
+    <div class="grade-videos">{vids}</div>
+  </div>
+</section>
+
+<section class="secao secao-creme">
+  <div class="secao-inner duas-colunas">
+    <div>
+      <h2>Sugest&otilde;es de M&uacute;sicas</h2>
+      <p>N&atilde;o sabe qual m&uacute;sica escolher? Reunimos sugest&otilde;es que combinam com cada tipo de homenagem para te inspirar.</p>
+      <a class="link-seta" href="sugestoes-de-musicas/">Ver sugest&otilde;es de m&uacute;sicas</a>
+    </div>
+    <div>
+      <h2>Blog das Serenatas</h2>
+      <p>Hist&oacute;rias, ideias e datas especiais para presentear com m&uacute;sica em Curitiba e regi&atilde;o.</p>
+      <a class="link-seta" href="blog/">Ler o blog</a>
+    </div>
+  </div>
+</section>
+'''
+    pag = pagina(SERENATA, '', 'Serenata em Curitiba | Quartilis',
+                 'Serenata em Curitiba e regiao: homenagem musical ao vivo ou por video para pedidos de casamento, aniversarios e datas especiais. Quartilis, desde 2002.',
+                 corpo, ativo='Início')
+    pag = pag.replace('__CANONICAL__', 'https://serenata.quartilis.com.br/')
+    open(os.path.join(ROOT, 'serenata.quartilis.com.br', 'index.html'), 'w', encoding='utf-8').write(pag)
+    print('  serenata landing (Início visual) gerada')
+
 gerar('serenata', SERENATA)
+serenata_landing()
 gerar('blog', BLOG)
 print('OK')

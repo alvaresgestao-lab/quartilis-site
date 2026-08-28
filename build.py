@@ -21,6 +21,7 @@ def imgname(u): return urllib.parse.unquote(u.split('?')[0].rsplit('/', 1)[-1])
 
 NAV = [('', 'Home'), ('musicos/', 'Músicos'), ('servicos/', 'Serviços'),
        ('fotos-e-videos/', 'Fotos e Vídeos'), ('repertorio/', 'Repertório'),
+       ('https://serenata.quartilis.com.br', 'Serenatas'),
        ('https://blog.quartilis.com.br', 'Blog'), ('contato/', 'Contato')]
 
 def header(prefix, active):
