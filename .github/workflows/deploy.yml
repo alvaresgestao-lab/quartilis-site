@@ -1,9 +1,12 @@
-# Deploy automático: push na main → upload FTP pro cPanel
+# DESATIVADO (01/09/2026): o deploy oficial agora é feito pela VPS
+# (deploy-quartilis.sh, envio via FTP sem sincronizar deleções).
+# O gatilho automático de push foi removido porque este workflow faz um
+# deploy que SINCRONIZA (apaga remotos) e falhava toda vez que um arquivo
+# era removido do repo (erro FTP 550), gerando e-mails de falha sem motivo.
+# Continua disponível só para execução MANUAL (workflow_dispatch) como fallback.
 # Requer os secrets FTP_HOST, FTP_USER e FTP_PASS configurados no repositório.
 name: Deploy FTP
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 jobs:
   deploy:
