@@ -101,7 +101,7 @@ def page(prefix, active, title, desc, body, extra_head=''):
 <link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}assets/site.css?v=3">
+<link rel="stylesheet" href="{prefix}assets/site.css?v=4">
 {extra_head}</head>
 <body>
 {header(prefix, active)}
@@ -146,7 +146,7 @@ body = f'''
       <p>O grupo é reconhecido pela alta qualidade, afinidade entre os músicos e a execução impecável do repertório, do erudito ao popular.</p>
       <a class="link-seta" href="musicos/">Conheça os músicos</a>
     </div>
-    <figure class="foto-chanfro"><img src="{I}KG9A0027.jpg" alt="Quartilis tocando em concerto à luz de velas" loading="lazy"></figure>
+    <figure class="foto-chanfro"><img src="{I}quarteto-cordas-harpa-jardim-casamento-curitiba.jpg" alt="Quarteto de cordas e harpa do Quartilis em casamento ao ar livre em Curitiba" loading="lazy"></figure>
   </div>
 </section>
 
@@ -216,15 +216,19 @@ write('musicos/index.html', page('../', 'Músicos', 'Músicos | Quartilis',
 # ============ SERVIÇOS ============
 servicos = [
     ('Música ao vivo para cerimônia', 'Casamento, bodas e missa',
-     'Com formações que variam desde instrumentos solo (piano, violino, violão) até orquestra de cordas e clarins, com a participação de cantores, para emocionar e tornar o seu evento único e especial.'),
+     'Com formações que variam desde instrumentos solo (piano, violino, violão) até orquestra de cordas e clarins, com a participação de cantores, para emocionar e tornar o seu evento único e especial.',
+     'clarins-flamula-quartilis-casamento-curitiba.jpg', 'Clarins do Quartilis na entrada da noiva em casamento em Curitiba'),
     ('Música ao vivo para recepção', 'Coquetel, almoço e jantar',
-     'Música instrumental requintada, com diversas opções de estilos musicais e formações, incluindo grupos acústicos, para recepcionar os convidados e deixar o ambiente do seu evento agradável e sofisticado.'),
+     'Música instrumental requintada, com diversas opções de estilos musicais e formações, incluindo grupos acústicos, para recepcionar os convidados e deixar o ambiente do seu evento agradável e sofisticado.',
+     'sax-piano-recepcao-casamento-curitiba.jpg', 'Saxofone e piano na recepção de casamento em Curitiba'),
     ('Concerto didático', 'Abertura de eventos, congressos e palestras',
-     'Repertório variado para agradar a todos os públicos e enriquecer o seu evento.'),
+     'Repertório variado para agradar a todos os públicos e enriquecer o seu evento.',
+     'trio-violino-violoncelo-harpa-casamento-curitiba.jpg', 'Trio de violino, violoncelo e harpa do Quartilis em Curitiba'),
     ('Serenatas e homenagens', 'Um presente inesquecível',
-     'Homenagens musicais em diversas opções de formações, para presentear e homenagear quem você ama em aniversários, pedidos de casamento e datas especiais. <a class="link-seta" href="https://serenata.quartilis.com.br" target="_blank" rel="noopener">Conheça o site de Serenatas</a>'),
+     'Homenagens musicais em diversas opções de formações, para presentear e homenagear quem você ama em aniversários, pedidos de casamento e datas especiais. <a class="link-seta" href="https://serenata.quartilis.com.br" target="_blank" rel="noopener">Conheça o site de Serenatas</a>',
+     'violinista-casamento-curitiba.jpg', 'Violinista do Quartilis em serenata em Curitiba'),
 ]
-blocos = ''.join(f'''<div class="card-servico grande"><h2>{t}</h2><p class="tag">{tag}</p><p>{d}</p></div>''' for t, tag, d in servicos)
+blocos = ''.join(f'''<div class="card-servico grande"><figure class="card-foto"><img src="../{I}{img}" alt="{alt}" loading="lazy"></figure><h2>{t}</h2><p class="tag">{tag}</p><p>{d}</p></div>''' for t, tag, d, img, alt in servicos)
 body = f'''
 <section class="secao secao-titulo"><div class="secao-inner"><h1>Serviços</h1>
 <p class="sub">O Quartilis oferece formações musicais personalizadas para o seu evento. Agende um atendimento e receba uma consultoria especializada para a escolha da formação e do repertório.</p></div></section>
@@ -276,7 +280,7 @@ rep = re.sub(r'<footer class="rodape">.*?</footer>\n?', '', rep, flags=re.S)
 rep = re.sub(r'<a class="whats-flutuante".*?</a>\n?', '', rep, flags=re.S)
 rep = re.sub(r'<link rel="stylesheet" href="\.\./assets/site\.css">\n?', '', rep)
 rep = rep.replace('Repertório | Quartilis (protótipo)', 'Repertório | Quartilis')
-rep = rep.replace('</head>', '<link rel="icon" type="image/png" href="../assets/favicon.png?v=1">\n<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">\n<link rel="stylesheet" href="../assets/site.css?v=3">\n</head>', 1)
+rep = rep.replace('</head>', '<link rel="icon" type="image/png" href="../assets/favicon.png?v=1">\n<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">\n<link rel="stylesheet" href="../assets/site.css?v=4">\n</head>', 1)
 rep = rep.replace('<body>', '<body>\n' + header('../', 'Repertório'), 1)
 rep = rep.replace('</body>', footer('../') + '\n</body>', 1)
 open(rep_path, 'w', encoding='utf-8').write(rep)

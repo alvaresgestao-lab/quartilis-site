@@ -74,6 +74,9 @@ h3{font-size:22px}
 .card-servico h3,.card-servico h2{margin-bottom:6px}
 .card-servico .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-escuro);margin-bottom:12px}
 .secao-creme .card-servico{background:var(--branco)}
+.card-servico .card-foto{margin:-28px -24px 20px;overflow:hidden}
+.card-servico.grande .card-foto{margin:-36px -30px 24px}
+.card-servico .card-foto img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
 
 /* ---------- músicos ---------- */
 .grade-musicos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
