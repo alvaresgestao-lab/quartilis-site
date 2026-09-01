@@ -245,10 +245,12 @@ SERENATA = {
             ('blog/', 'Blog'), ('https://quartilis.com.br', 'Site Quartilis')],
     'paginas': [('serenata-ao-vivo', 'serenata-ao-vivo/', ''),
                 ('sugestoes-de-musicas', 'sugestoes-de-musicas/', 'Sugestões de Músicas'), ('videos', 'videos/', '')],
-    'excluir_posts': ['serenata-virtual', 'serenata-por-video-violino', 'serenata-com-seguranca', 'presentes-musicais-serenata'],
+    'excluir_posts': ['serenata-virtual', 'serenata-por-video-violino', 'serenata-com-seguranca', 'presentes-musicais-serenata',
+                      'dia-dos-avos-26-07', 'dia-dos-pais', 'serenatas-de-natal', 'serenatas-em-curitiba',
+                      'serenata-de-dia-das-maes', 'dia-dos-namorados'],
     'blog_dest': 'blog/', 'blog_titulo': 'Blog', 'blog_sub': 'Histórias de serenatas, homenagens e datas especiais em Curitiba.',
     'cta': 'Quero uma serenata', 'permalink': 'simples', 'origem': 'site de Serenatas do Quartilis',
-    'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/category/.*$ /blog/\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/\nRedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /\nRedirectMatch 301 ^/serenata-por-video/?$ /\nRedirectMatch 301 ^/(serenata-virtual|serenata-por-video-violino|serenata-com-seguranca|presentes-musicais-serenata)/?$ /\nRedirectMatch 301 ^/serenata-em-curitiba/?$ /blog/serenata-em-curitiba/\n',
+    'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/category/.*$ /blog/\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/\nRedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /\nRedirectMatch 301 ^/serenata-por-video/?$ /\nRedirectMatch 301 ^/(serenata-virtual|serenata-por-video-violino|serenata-com-seguranca|presentes-musicais-serenata)/?$ /\nRedirectMatch 301 ^/(dia-dos-avos-26-07|dia-dos-pais|serenatas-de-natal|serenatas-em-curitiba|serenata-de-dia-das-maes|dia-dos-namorados)/?$ /blog/\nRedirectMatch 301 ^/serenata-em-curitiba/?$ /blog/serenata-em-curitiba/\n',
 }
 # nota: serenata posts moram na raiz (/slug/), não sob /blog/ — ajustar htaccess acima se necessário
 SERENATA['htaccess'] = SERENATA['htaccess'].replace('/blog/serenata-em-curitiba/', '/serenata-em-curitiba/')

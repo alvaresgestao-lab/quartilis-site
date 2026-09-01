@@ -6,4 +6,5 @@ RedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/
 RedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /
 RedirectMatch 301 ^/serenata-por-video/?$ /
 RedirectMatch 301 ^/(serenata-virtual|serenata-por-video-violino|serenata-com-seguranca|presentes-musicais-serenata)/?$ /
+RedirectMatch 301 ^/(dia-dos-avos-26-07|dia-dos-pais|serenatas-de-natal|serenatas-em-curitiba|serenata-de-dia-das-maes|dia-dos-namorados)/?$ /blog/
 RedirectMatch 301 ^/serenata-em-curitiba/?$ /serenata-em-curitiba/
