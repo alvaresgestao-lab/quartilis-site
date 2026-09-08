@@ -27,7 +27,7 @@ Já a harpa, linda e delicada, pede um ponto protegido de sol direto e vento for
 
 Ao ar livre, os músicos sempre precisam de proteção: do sol forte, do frio e, principalmente, da chuva. Instrumentos acústicos de madeira não podem se molhar nem ficar horas expostos, então esse cuidado é obrigatório, nunca um detalhe de última hora.
 
-E há mais de um jeito de resolver. Algumas chácaras já oferecem uma área coberta ou um ombrelão para o grupo. Quando o espaço não tem, o Quartilis pode levar a própria tenda e montá-la em caso de risco de chuva, mantendo os instrumentos a salvo.
+E há mais de um jeito de resolver. Algumas chácaras já oferecem uma área coberta ou um ombrelone para o grupo. Quando o espaço não tem, o Quartilis pode levar a própria tenda e montá-la em caso de risco de chuva, mantendo os instrumentos a salvo.
 
 O importante é combinar isso antes: um ponto coberto e à sombra para o grupo, próximo ao altar, resolve a maioria dos imprevistos.
 
@@ -44,7 +44,7 @@ Outro detalhe que passa batido: onde o grupo fica em cada momento, da cerimônia
 <ul>
 <li>Ao ar livre, a escolha dos instrumentos e da formação faz toda a diferença.</li>
 <li>Cordas, saxofone, piano, clarins e vocal têm ótima presença em chácaras e jardins.</li>
-<li>Ao ar livre, os músicos sempre precisam de cobertura contra sol, frio e chuva: área coberta, ombrelão ou a tenda própria do Quartilis.</li>
+<li>Ao ar livre, os músicos sempre precisam de cobertura contra sol, frio e chuva: área coberta, ombrelone ou a tenda própria do Quartilis.</li>
 <li>Fale com os músicos cedo, antes de o cronograma estar fechado.</li>
 </ul>
 
