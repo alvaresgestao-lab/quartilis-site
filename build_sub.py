@@ -262,7 +262,7 @@ BLOG = {
     'paginas': [], 'blog_dest': '', 'blog_titulo': 'Blog Quartilis',
     'blog_sub': 'Dicas para a escolha da música do casamento e histórias reais de cerimônias com o Quartilis.',
     'cta': 'Pedir um orçamento', 'permalink': 'data', 'origem': 'blog do Quartilis',
-    'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/(inspiracoes|dicas|pagina-inicial|blog)/?$ /\nRedirectMatch 301 ^/category/.*$ /\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /\n',
+    'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/(inspiracoes|dicas|pagina-inicial|blog)/?$ /\nRedirectMatch 301 ^/category/.*$ /\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /\nRedirectMatch 301 ^/2026/09/21/casamento-de-fim-de-ano-em-curitiba-o-que-muda-na-musica-ao-vivo/?$ /\n',
 }
 
 def serenata_landing():
