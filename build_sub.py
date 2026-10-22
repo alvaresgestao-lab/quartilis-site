@@ -193,7 +193,10 @@ def gerar(site, cfg):
             return f'{a}/{m}/{d}/{p["post_name"]}/'
         return f'{p["post_name"]}/'
 
-    def escrever(rel, conteudo_html):
+    mapa = []  # (rel, lastmod) para o sitemap.xml
+
+    def escrever(rel, conteudo_html, lastmod):
+        mapa.append((rel, lastmod))
         full = os.path.join(base, rel, 'index.html') if rel else os.path.join(base, 'index.html')
         os.makedirs(os.path.dirname(full), exist_ok=True)
         canonical = f'https://{site}.quartilis.com.br/' + rel
@@ -207,7 +210,8 @@ def gerar(site, cfg):
         prefix = '../' * dest.count('/') if dest else ''
         corpo_html = render_conteudo(p['post_content'], prefix, updisk)
         corpo = f'<section class="secao secao-titulo"><div class="secao-inner"><h1>{html.escape(p["post_title"])}</h1></div></section><article class="artigo">{corpo_html}</article>'
-        escrever(dest, pagina(cfg, prefix, f'{p["post_title"]} | {cfg["titulo"]}', resumo(corpo_html), corpo, ativo=no_nav))
+        escrever(dest, pagina(cfg, prefix, f'{p["post_title"]} | {cfg["titulo"]}', resumo(corpo_html), corpo, ativo=no_nav),
+                 p.get('post_modified', p['post_date'])[:10])
 
     # listagem do blog
     dest = cfg['blog_dest']
@@ -219,7 +223,8 @@ def gerar(site, cfg):
         cards += f'''<div class="post-card"><a href="{prefix}{cam}"><h2>{html.escape(p["post_title"])}</h2></a>
 <p class="data">{data_pt(p["post_date"])}</p><p>{html.escape(resumo(corpo_render))}</p></div>'''
     corpo = f'<section class="secao secao-titulo"><div class="secao-inner"><h1>{cfg["blog_titulo"]}</h1><p class="sub">{cfg["blog_sub"]}</p></div></section><div class="lista-posts">{cards}</div>'
-    escrever(dest, pagina(cfg, prefix, cfg['titulo'] if cfg['blog_titulo'] == cfg['titulo'] else f'{cfg["blog_titulo"]} | {cfg["titulo"]}', cfg['blog_sub'], corpo, ativo='Blog'))
+    recente = arts[0]['post_date'][:10] if arts else '2026-08-14'
+    escrever(dest, pagina(cfg, prefix, cfg['titulo'] if cfg['blog_titulo'] == cfg['titulo'] else f'{cfg["blog_titulo"]} | {cfg["titulo"]}', cfg['blog_sub'], corpo, ativo='Blog'), recente)
 
     # posts
     for p in arts:
@@ -231,7 +236,15 @@ def gerar(site, cfg):
 {corpo_html}
 <p style="margin-top:34px"><a class="btn" href="https://wa.me/{WHATS}?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener">{cfg['cta']}</a></p>
 <p style="margin-top:18px"><a class="link-seta" href="{prefix}{cfg['blog_dest']}">Voltar ao blog</a></p></article>'''
-        escrever(cam, pagina(cfg, prefix, f'{p["post_title"]} | {cfg["titulo"]}', resumo(corpo_html), corpo))
+        escrever(cam, pagina(cfg, prefix, f'{p["post_title"]} | {cfg["titulo"]}', resumo(corpo_html), corpo),
+                 max(p['post_date'], p.get('post_modified', ''))[:10])
+
+    # sitemap.xml: regerado a cada build, então todo artigo novo entra sozinho
+    if '' not in (r for r, _ in mapa):
+        mapa.insert(0, ('', recente))  # início do serenata (gerado em serenata_landing)
+    linhas = ''.join(f'  <url><loc>https://{site}.quartilis.com.br/{r}</loc><lastmod>{d}</lastmod></url>\n' for r, d in mapa)
+    open(os.path.join(base, 'sitemap.xml'), 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + linhas + '</urlset>\n')
 
     # .htaccess: categorias/feeds antigos -> blog
     open(os.path.join(base, '.htaccess'), 'w').write(cfg['htaccess'])
@@ -247,13 +260,18 @@ SERENATA = {
                 ('sugestoes-de-musicas', 'sugestoes-de-musicas/', 'Sugestões de Músicas'), ('videos', 'videos/', '')],
     'excluir_posts': ['serenata-virtual', 'serenata-por-video-violino', 'serenata-com-seguranca', 'presentes-musicais-serenata',
                       'dia-dos-avos-26-07', 'dia-dos-pais', 'serenatas-de-natal', 'serenatas-em-curitiba',
-                      'serenata-de-dia-das-maes', 'dia-dos-namorados'],
+                      'serenata-de-dia-das-maes', 'dia-dos-namorados', 'serenata-um-presente-inesquecivel',
+                      'pedido-de-casamento', 'pedido-de-casamento-2', 'serenata-com-violino', 'serenata-com-violino-2',
+                      'serenata-com-violino-3', 'serenata-de-aniversario-2', 'serenata-de-aniversario-3',
+                      'serenata-de-aniversario-4', 'serenata-de-aniversario-5'],
     'blog_dest': 'blog/', 'blog_titulo': 'Blog', 'blog_sub': 'Histórias de serenatas, homenagens e datas especiais em Curitiba.',
     'cta': 'Quero uma serenata', 'permalink': 'simples', 'origem': 'site de Serenatas do Quartilis',
-    'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/category/.*$ /blog/\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/\nRedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /\nRedirectMatch 301 ^/serenata-por-video/?$ /\nRedirectMatch 301 ^/(serenata-virtual|serenata-por-video-violino|serenata-com-seguranca|presentes-musicais-serenata)/?$ /\nRedirectMatch 301 ^/(dia-dos-avos-26-07|dia-dos-pais|serenatas-de-natal|serenatas-em-curitiba|serenata-de-dia-das-maes|dia-dos-namorados)/?$ /blog/\nRedirectMatch 301 ^/serenata-em-curitiba/?$ /blog/serenata-em-curitiba/\n',
+    'htaccess': 'RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]\nRedirectMatch 301 ^/category/.*$ /blog/\nRedirectMatch 301 ^/(feed|comments/feed)/?$ /blog/\nRedirectMatch 301 ^/serenata-um-presente-inesquecivel/?$ /\nRedirectMatch 301 ^/serenata-por-video/?$ /\nRedirectMatch 301 ^/(serenata-virtual|serenata-por-video-violino|serenata-com-seguranca|presentes-musicais-serenata)/?$ /\nRedirectMatch 301 ^/(dia-dos-avos-26-07|dia-dos-pais|serenatas-de-natal|serenatas-em-curitiba|serenata-de-dia-das-maes|dia-dos-namorados)/?$ /blog/\n'
+                 # posts antigos do WP com o mesmo título: 301 para a versão que o Google já indexou
+                 'RedirectMatch 301 ^/pedido-de-casamento(-2)?/?$ /pedido-de-casamento-3/\n'
+                 'RedirectMatch 301 ^/serenata-com-violino(-[123])?/?$ /serenata-com-violino-4/\n'
+                 'RedirectMatch 301 ^/serenata-de-aniversario-[2-5]/?$ /serenata-de-aniversario/\n',
 }
-# nota: serenata posts moram na raiz (/slug/), não sob /blog/ — ajustar htaccess acima se necessário
-SERENATA['htaccess'] = SERENATA['htaccess'].replace('/blog/serenata-em-curitiba/', '/serenata-em-curitiba/')
 
 BLOG = {
     'titulo': 'Blog Quartilis', 'marca': 'BLOG', 'tagline': 'quartilis · música para eventos',
